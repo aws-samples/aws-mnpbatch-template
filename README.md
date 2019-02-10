@@ -22,8 +22,12 @@ TENSORFLOW INSTALL
 IMAGENET DATASET
 ```
 Also modify the section in ```supervised-scripts/mpi-run.sh```
-```
-aws s3 cp $S3_INPUT $SCRATCH_DIR
+```bash
+wait_for_nodes () {
+	.
+	.
+	.
+  aws s3 cp $S3_INPUT $SCRATCH_DIR
   #tar -xvf $SCRATCH_DIR/*.tar.gz -C $SCRATCH_DIR
 
   cd $SCRATCH_DIR
@@ -42,5 +46,7 @@ aws s3 cp $S3_INPUT $SCRATCH_DIR
 
   #tar -czvf $JOB_DIR/batch_output_$AWS_BATCH_JOB_ID.tar.gz $SCRATCH_DIR/*
   #aws s3 cp $JOB_DIR/batch_output_$AWS_BATCH_JOB_ID.tar.gz $S3_OUTPUT
+ }
 ```
+
 
