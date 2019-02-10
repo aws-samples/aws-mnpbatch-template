@@ -16,12 +16,20 @@ docker build -t nvidia/mnp-batch-tensorflow .
 ```
 
 ## Custom Application Deployment
-The Dockerfile can mostly be reused for your application, the sections to replace are:
+The Dockerfile can mostly be reused for your application, It installs the following stack:
 ```
+Ubuntu 18.04 nvidia/cuda base docker image
+APT packages for dependencies
+SSH SETUP
+S3 OPTIMIZATION
+CUDA-AWARE MPI 4.0.0
 TENSORFLOW INSTALL
 IMAGENET DATASET
+SUPERVISOR DOCKER CONTAINER STARTUP
 ```
-Also replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ```$EXTRA_MPI_PARAMS```.
+Thus if you want apply your own customizations and application, you just need to modify the MPI, Tensorflow layers. Also custom build scripts are located in ```conf/```.
+
+Finally replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ``$EXTRA_MPI_PARAMS```.
 ```bash
 wait_for_nodes () {
 	.
