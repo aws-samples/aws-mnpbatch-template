@@ -2,11 +2,11 @@
 
 Template scripts to setup Docker Images compatible with running on MNP Batch
 
-## License Summary
+### License Summary
 
 This sample code is made available under a modified MIT license. See the LICENSE file.
 
-## Tensorflow Deployment
+### Tensorflow Deployment
 To build a Tensorflow reference docker image compatible with running tightly coupled multi-node parallel batch jobs on AWS Batch.
 
 ```bash
@@ -15,7 +15,7 @@ cd aws-mnpbatch-template
 docker build -t nvidia/mnp-batch-tensorflow .
 ```
 
-## Custom Application Deployment
+### Custom Application Deployment
 The Dockerfile can mostly be reused for your application, It installs the following stack:
 ```
 Ubuntu 18.04 nvidia/cuda base docker image
@@ -29,7 +29,7 @@ SUPERVISOR DOCKER CONTAINER STARTUP
 ```
 Thus if you want apply your own customizations and application, you just need to modify the MPI, Tensorflow layers. Also custom build scripts are located in ```conf/```.
 
-Finally replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ``$EXTRA_MPI_PARAMS```.
+Finally replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ```$EXTRA_MPI_PARAMS```.
 ```bash
 wait_for_nodes () {
 	.
