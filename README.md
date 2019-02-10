@@ -16,12 +16,12 @@ docker build -t nvidia/mnp-batch-tensorflow .
 ```
 
 ## Custom Application Deployment
-The Dockerfile can mostly be reused for your application, the section to modify is:
+The Dockerfile can mostly be reused for your application, the sections to replace are:
 ```
 TENSORFLOW INSTALL
 IMAGENET DATASET
 ```
-Also modify the section in ```supervised-scripts/mpi-run.sh```
+Also replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine and passed as ```${HOST_FILE_PATH}-deduped```.
 ```bash
 wait_for_nodes () {
 	.
