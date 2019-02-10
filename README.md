@@ -1,4 +1,4 @@
-## MNP Batch Template for Creating Docker Images
+## Template for Creating Multi-node Parallel Batch Docker Images
 
 Template scripts to setup Docker Images compatible with running on MNP Batch
 
