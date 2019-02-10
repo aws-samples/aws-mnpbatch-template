@@ -8,7 +8,7 @@ This sample code is made available under a modified MIT license. See the LICENSE
 
 ## Deployment
 
-````bash
+```bash
 git clone https://github.com/aws-samples/aws-mnpbatch-template.git
 cd aws-mnpbatch-template
 cp examples/mnp-tensorflow/Docker .
