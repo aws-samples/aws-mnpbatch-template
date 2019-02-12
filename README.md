@@ -29,7 +29,16 @@ SUPERVISOR DOCKER CONTAINER STARTUP
 ```
 Thus if you want apply your own customizations and application, you just need to modify the MPI, Tensorflow layers. Also custom build scripts are located in ```conf/```.
 
-Finally replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine file. If your node contains GPUs then the ```slots=```  with be the number of GPUs per node. If not then it will based on the vCPUs/Cores where applicable and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ```$EXTRA_MPI_PARAMS```.
+Finally replace the section in ```supervised-scripts/mpi-run.sh``` to support the MPI startup of your custom application. The script logic will prepare the mpi machine file. If your node contains GPUs then the ```slots=```  with be the number of GPUs per node. 
+```bash
+if [ -x "$(command -v nvidia-smi)" ] ; then
+      NUM_GPUS=$(ls -l /dev/nvidia[0-9] | wc -l)
+      availablecores=$NUM_GPUS
+  else
+      availablecores=$(nproc)
+  fi
+```
+If not then it will based on the vCPUs/Cores where applicable and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ```$EXTRA_MPI_PARAMS```.
 ```bash
 wait_for_nodes () {
 	.
