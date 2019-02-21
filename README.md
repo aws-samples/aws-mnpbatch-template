@@ -38,7 +38,7 @@ if [ -x "$(command -v nvidia-smi)" ] ; then
       availablecores=$(nproc)
   fi
 ```
-If not then it will based on the vCPUs/Cores where applicable and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ```$EXTRA_MPI_PARAMS```.
+If not then it will based on the vCPUs/Cores where applicable and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime will be passed into the ```$EXTRA_MPI_PARAMS```.
 ```bash
 wait_for_nodes () {
 	.
