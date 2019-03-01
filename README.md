@@ -6,8 +6,13 @@ Template scripts to setup Docker Images compatible with running on MNP Batch
 
 This sample code is made available under a modified MIT license. See the LICENSE file.
 
+<<<<<<< HEAD
 ### Tensorflow Deployment
 To build a Tensorflow reference docker image compatible with running tightly coupled multi-node parallel batch jobs on AWS Batch. Build platform requires installation of nvidia-docker2.
+=======
+### Horovod-Tensorflow Deployment
+To build a Tensorflow reference docker image compatible with running tightly coupled multi-node parallel batch jobs on AWS Batch.
+>>>>>>> 7766f8b0f2e6f2b4419d1a9f259896451b675a63
 
 ```bash
 git clone https://github.com/aws-samples/aws-mnpbatch-template.git
@@ -22,7 +27,7 @@ Ubuntu 18.04 nvidia/cuda base docker image
 APT packages for dependencies
 SSH SETUP
 S3 OPTIMIZATION
-CUDA-AWARE MPI 4.0.0
+CUDA-AWARE OpenMPI 4.0.0
 TENSORFLOW INSTALL
 IMAGENET DATASET
 SUPERVISOR DOCKER CONTAINER STARTUP
@@ -38,7 +43,7 @@ if [ -x "$(command -v nvidia-smi)" ] ; then
       availablecores=$(nproc)
   fi
 ```
-If not then it will based on the vCPUs/Cores where applicable and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime and will be passed into the ```$EXTRA_MPI_PARAMS```.
+If not then it will based on the vCPUs/Cores where applicable and passed as ```${HOST_FILE_PATH}-deduped```. Any extra MPI parameters at job runtime will be passed into the ```$EXTRA_MPI_PARAMS```.
 ```bash
 wait_for_nodes () {
 	.
