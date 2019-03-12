@@ -6,7 +6,7 @@ Template scripts to setup Docker Images compatible with running on MNP Batch
 
 This sample code is made available under a modified MIT license. See the LICENSE file.
 
-### Tensorflow Deployment
+### Horovod Tensorflow Deployment
 To build a Tensorflow reference docker image compatible with running tightly coupled multi-node parallel batch jobs on AWS Batch. Build platform requires installation of nvidia-docker2.
 
 ```bash
