@@ -66,9 +66,9 @@ for vpython in python3; do
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${TF_ROOT}/pip/tensorflow_pkg
 
   if [ "$vpython" = "python2" ]; then
-    pip2 install ${TF_ROOT}/pip/tensorflow_pkg/tensorflow-${TF_VERSION}.0-cp2*
+    pip2 install ${TF_ROOT}/pip/tensorflow_pkg/tensorflow-${TF_VERSION}.?-cp2*
   elif [ "$vpython" = "python3" ]; then
-    pip3 install ${TF_ROOT}/pip/tensorflow_pkg/tensorflow-${TF_VERSION}.0-cp3*
+    pip3 install ${TF_ROOT}/pip/tensorflow_pkg/tensorflow-${TF_VERSION}.?-cp3*
   fi
 
 done
